@@ -4,16 +4,14 @@ import { CORE_CONCEPTS } from "./data";
 
 import Header from "./components/Header";
 import CoreConcepts from "./components/CoreConcepts";
-
-const reactDescription = ["Fundamental", "Crucial", "Core"];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
+import TabButton from "./components/TabButton";
 
 
 function App() {
+
+  const handleSelect = () => {
+    console.log(`Button clicked!`);
+    };
   return (
     <div>
       <Header />
@@ -33,7 +31,14 @@ function App() {
           </ul>
         </section>
         <section id="examples">
-
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={handleSelect}>Components</TabButton>
+            <TabButton onSelect={handleSelect}>JSX</TabButton>
+            <TabButton onSelect={handleSelect}>Props</TabButton>
+            <TabButton onSelect={handleSelect}>State</TabButton>
+          </menu>
+          {/* dynamic content */}
         </section>
       </main>
     </div>
