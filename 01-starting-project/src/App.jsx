@@ -20,19 +20,13 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcepts
-              title="Components"
-              description="The core UI building block - compose the user interface by combining multiple components."
-              image={componentsImg}
-            />
-            <CoreConcepts
-              title={CORE_CONCEPTS[1].title}
-              description={CORE_CONCEPTS[1].description}
-              image={CORE_CONCEPTS[1].image}
-            />
-            {/* Spread operator can be used when custom component key name and data key are same */}
-            <CoreConcepts {...CORE_CONCEPTS[2]} />
-            <CoreConcepts {...CORE_CONCEPTS[3]} />
+            {
+              // Loop through CORE_CONCEPTS array and render each concept
+              CORE_CONCEPTS.map((concept) => (
+                // <CoreConcepts key={concept.id} image={concept.image} title={concept.title} description={concept.description} />
+                <CoreConcepts {...concept} key={concept.id} />
+              ))
+            }
           </ul>
         </section>
         <section id="examples">
