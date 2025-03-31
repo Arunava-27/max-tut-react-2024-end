@@ -1,5 +1,4 @@
 import { useState } from "react";
-import componentsImg from "./assets/components.png";
 import { CORE_CONCEPTS, EXAMPLES } from "./data";
 
 import Header from "./components/Header";
