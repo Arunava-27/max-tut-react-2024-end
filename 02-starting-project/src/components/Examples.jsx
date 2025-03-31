@@ -30,6 +30,7 @@ export default function Examples() {
   return (
     <Section title="Examples" id="examples">
       <Tabs
+        buttonsContainer="menu" // {} for custom container like {Section} "" for inbuilt container like "menu"
         buttons={
           <>
             <TabButton
