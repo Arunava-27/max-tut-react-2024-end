@@ -7,6 +7,11 @@ import GameOver from "./components/GameOver";
 
 import { WINNING_COMBINATIONS } from "./winning-combinations";
 
+const PLAYERS = {
+  X: 'Player 1',
+  O: 'Player 2'
+};
+
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -25,10 +30,7 @@ function DeriveActivePlayer(gameTurns) {
 }
 
 function App() {
-  const [players, setPlayers] = useState({
-    X: 'Player 1',
-    O: 'Player 2'
-  })
+  const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]); 
   // const [activePlayer, setActivePlayer] = useState('X');
 
@@ -52,6 +54,7 @@ function App() {
 
     if(firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol){
       winner = players[firstSquareSymbol];
+      console.log(`Winner is ${winner}`);
       break;
     }
   }
@@ -84,8 +87,8 @@ function App() {
       <div id="game-container">
         {/* PLAYERS */}
         <ol id="players" className="highlight-player">
-          <Player name="Player 1" symbol="X" isActive={activePlayer === 'X'} onChangeName={handlePlayerNameChange}/>
-          <Player name="Player 2" symbol="O" isActive={activePlayer === 'O'} onChangeName={handlePlayerNameChange}/>
+          <Player name={PLAYERS.X} symbol="X" isActive={activePlayer === 'X'} onChangeName={handlePlayerNameChange}/>
+          <Player name={PLAYERS.O} symbol="O" isActive={activePlayer === 'O'} onChangeName={handlePlayerNameChange}/>
         </ol>
         {/* GAME BOARD */}
         {(winner || isDraw) && <GameOver winner={winner} onReset={handleReset}/>}
