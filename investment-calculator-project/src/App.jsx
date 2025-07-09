@@ -12,6 +12,8 @@ function App() {
     duration: 0,
   });
 
+  const inputIsValid = userInput.duration >= 1 && userInput.initialInvestment > 0 && userInput.annualInvestment > 0 && userInput.expectedReturn > 0;
+
   function handleChange(inputIdentifier, newValue) {
     // Function to handle input changes
     setUserInput((prevState) => {
@@ -29,7 +31,16 @@ function App() {
     <>
       <Header />
       <UserInput userInput={userInput} onInputChange={handleChange} />
-      <Results userInput={userInput} />
+      {!inputIsValid && (
+        <p className="center">
+          <strong>Please enter valid values for all fields.</strong>
+          <br />
+          Duration must be at least 1 year, and all other values must be greater than 0.
+        </p>
+      )}
+      {
+        inputIsValid && <Results userInput={userInput} />
+      }
     </>
   )
 }
