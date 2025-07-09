@@ -19,7 +19,7 @@ function App() {
       // Using the inputIdentifier to update the specific field in the state
       return {
         ...prevState, // Spread the previous state
-        [inputIdentifier]: newValue, // Update the specific field with the new value
+        [inputIdentifier]: +newValue, // Update the specific field with the new value
       };
     });
     // console.log(`Updated ${inputIdentifier} to ${newValue}`);
